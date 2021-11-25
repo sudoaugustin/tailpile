@@ -35,8 +35,7 @@
     "Other"
   ],
   "galleryBanner": {
-    "color": "#CBD5E1",
-    "theme": "dark"
+    "color": "#F1F5F9"
   },
   "contributes": {
     "commands": [
