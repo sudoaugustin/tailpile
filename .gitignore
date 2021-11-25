@@ -1,0 +1,7 @@
+node_modules
+*.LICENSE.txt
+css/output/*
+**/build
+.vscode-test
+*.vsix
+dist

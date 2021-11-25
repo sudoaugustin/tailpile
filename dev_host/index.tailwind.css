@@ -1,0 +1,7 @@
+.btn {
+  @apply px-4 py-2;
+}
+
+.circle {
+  @apply w-10 h-10 rounded-full bg-white;
+}

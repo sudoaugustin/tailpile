@@ -1,0 +1,126 @@
+{
+  "name": "tailpile",
+  "icon": "media/icon.png",
+  "main": "./dist/index.js",
+  "author": {
+    "name": "Augustin Joseph",
+    "url": "https://twitter.com/sudoaugustin",
+    "email": "sudoaugustin@gmail.com"
+  },
+  "preview": true,
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vscode",
+    "tailwindcss",
+    "tailwind",
+    "transpile",
+    "transpiler",
+    "css",
+    "compiler"
+  ],
+  "publisher": "sudoaugustin",
+  "homepage": "https://github.com/sudoaugustin/tailpile#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudoaugustin/tailpile"
+  },
+  "displayName": "Tailpile",
+  "description": "Transpile your tailwindcss files into purecss files On Save.",
+  "categories": [
+    "Extension Packs",
+    "Other"
+  ],
+  "galleryBanner": {
+    "color": "#CBD5E1",
+    "theme": "dark"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "title": "Install Tailwind CSS",
+        "command": "tailpile.tailwindcss",
+        "category": "Tailpile"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Tailpile",
+        "properties": {
+          "tailpile.output": {
+            "type": "string",
+            "default": "",
+            "markdownDescription": "The output directory for the transpiled css files. (Note: Set the path relative from workspace root.)"
+          },
+          "tailpile.compact": {
+            "type": "boolean",
+            "default": true,
+            "markdownDescription": "If `true`, the transpiled css will be minified."
+          },
+          "tailpile.browsers": {
+            "type": [
+              "array",
+              "string"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              "defaults"
+            ],
+            "markdownDescription": "The browsers you target for transpiled css. Either a [browserslist](https://github.com/browserslist/browserslist) query or `package.json` to use browserslist key in package.json file."
+          },
+          "tailpile.packageManager": {
+            "type": "string",
+            "default": "npm",
+            "enum": [
+              "npm",
+              "yarn"
+            ],
+            "markdownDescription": "The package manager to use for installing tailwindcss."
+          },
+          "tailpile.tailwindcss.config": {
+            "type": "string",
+            "default": "",
+            "markdownDescription": "The path for the tailwindcss configuration file. (Note: Set the path relative from workspace root.)"
+          },
+          "tailpile.tailwindcss.version": {
+            "type": "string",
+            "default": "latest",
+            "enum": [
+              "next",
+              "latest"
+            ],
+            "markdownDescription": "TailwindCSS version tag to install with **Install Tailwind CSS** command."
+          }
+        }
+      }
+    ]
+  },
+  "activationEvents": [
+    "workspaceContains:**/*.tailwind.css"
+  ],
+  "scripts": {
+    "test": "eslint . && node ./test/runTest.js",
+    "build": "rimraf dist && ncc build src/index -e ../modules -m",
+    "watch": "rimraf dist && ncc build src/index -e ../modules -w",
+    "modules": "node scripts/modules"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.62.0",
+    "clean-css": "^5.2.2",
+    "eslint": "^7.27.0",
+    "exec-sh": "^0.4.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "postcss": "^8.4.1",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
