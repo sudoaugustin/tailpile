@@ -106,6 +106,7 @@
     "test": "eslint . && node ./test/runTest.js",
     "build": "rimraf dist && ncc build src/index -e ../modules -m",
     "watch": "rimraf dist && ncc build src/index -e ../modules -w",
+    "deploy": "vsce publish",
     "modules": "node scripts/modules"
   },
   "devDependencies": {
